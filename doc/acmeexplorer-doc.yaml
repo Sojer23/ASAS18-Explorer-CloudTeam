@@ -9,7 +9,7 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: acme.explorer.io
+host: localhost:8080
 basePath: /v1
 schemes:
   - https
@@ -27,8 +27,8 @@ paths:
         - application/json
       parameters: []
       responses:
-        default:
-          description: successful operation
+        200:
+          description: "successful operation"
       x-swagger-router-controller: Actor
     post:
       tags:
@@ -53,7 +53,7 @@ paths:
         '405':
           description: Invalid input
       x-swagger-router-controller: Actor
-  /actors/{actorId}:
+  /actors/:actorId:
     get:
       tags:
         - Actor
@@ -106,7 +106,7 @@ paths:
         '404':
           description: Actor not found
       x-swagger-router-controller: Actor
-  /actors/{actorId}/ban:
+  /actors/:actorId/ban:
     put:
       tags:
         - Actor
@@ -134,7 +134,7 @@ paths:
         '404':
           description: Actor not found
       x-swagger-router-controller: Actor
-  /actors/{actorId}/unban:
+  /actors/:actorId:/unban:
     put:
       tags:
         - Actor
@@ -215,7 +215,7 @@ paths:
         default:
           description: successful operation
       x-swagger-router-controller: Trips
-  /trips/{tripId}:
+  /trips/:tripId:
     get:
       tags:
         - Trip
@@ -293,6 +293,34 @@ paths:
         '404':
           description: Trip not found
       x-swagger-router-controller: Trips
+  /trips/:tripId/cancel:
+    put:
+      tags:
+        - Trip
+      summary: Cancel a trip
+      description: This can only be done by the authorized user.
+      operationId: cancel_a_trip
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: tripId
+          in: path
+          description: Trip ID that needs to be canceled
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Cancel trip object
+          required: true
+          schema:
+            $ref: '#/definitions/Trip'
+      responses:
+        '400':
+          description: Invalid trip ID supplied
+        '404':
+          description: Trip not found
+      x-swagger-router-controller: Trips
   /applications:
     get:
       tags:
@@ -308,10 +336,11 @@ paths:
         default:
           description: successful operation
       x-swagger-router-controller: Applications
+  /applications/:tripId:
     post:
       tags:
-        - Application
-      summary: Add a new application
+        - Application 
+      summary: Add a new application by tripId
       description: ''
       operationId: create_an_application
       consumes:
@@ -331,11 +360,11 @@ paths:
         '405':
           description: Invalid input
       x-swagger-router-controller: Applications
-  /applications/applicationId/changeStatus:
-    get:
+  /applications/:applicationId/change:
+    put:
       tags:
         - Application
-      summary: Find application by Application ID
+      summary: Change status by Application ID
       description: Returns a application by Application ID
       operationId: search_user_applications
       produces:
@@ -347,6 +376,12 @@ paths:
           description: ID of application to return by its application
           required: true
           type: string
+        - in: body
+          name: body
+          description: Change status application object
+          required: true
+          schema:
+            $ref: '#/definitions/Application'
       responses:
         '200':
           description: successful operation
@@ -357,7 +392,7 @@ paths:
         '404':
           description: Application not found
       x-swagger-router-controller: Applications
-  /applications/{applicationId}:
+  /applications/:applicationId:
     get:
       tags:
         - Application
@@ -410,6 +445,70 @@ paths:
         '404':
           description: Application not found
       x-swagger-router-controller: Applications
+  /applications/:applicationId/pay:
+    put:
+      tags:
+        - Application
+      summary: Pay an application by Application ID
+      description: Returns a application by Application ID
+      operationId: pay_an_application
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: applicationId
+          in: path
+          description: ID of application to return by its application
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Pay application object
+          required: true
+          schema:
+            $ref: '#/definitions/Application'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Application'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Application not found
+      x-swagger-router-controller: Applications
+  /applications/:applicationId/cancel:
+    put:
+      tags:
+        - Application
+      summary: Cancel an application by Application ID
+      description: Returns a application by Application ID
+      operationId: cancel_an_application
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: applicationId
+          in: path
+          description: ID of application to return by its application
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Cancel application object
+          required: true
+          schema:
+            $ref: '#/definitions/Application'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Application'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Application not found
+      x-swagger-router-controller: Applications
   /sponsorships:
     get:
       tags:
@@ -448,7 +547,7 @@ paths:
         '405':
           description: Invalid input
       x-swagger-router-controller: Trips
-  /sponsorships/{sponsorshipId}:
+  /sponsorships/:sponsorshipId:
     get:
       tags:
         - Sponsorship
@@ -526,6 +625,34 @@ paths:
         '404':
           description: Sponsorship not found
       x-swagger-router-controller: Sponsorships
+  /sponsorships/:sponsorshipId/pay:
+    put:
+      tags:
+        - Sponsorship
+      summary: Pay a sponsorship
+      description: This can only be done by the authorized user.
+      operationId: pay_a_sponsorship
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: sponsorshipId
+          in: path
+          description: sponsorshipId that needs to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Pay sponsorship object
+          required: true
+          schema:
+            $ref: '#/definitions/Sponsorship'
+      responses:
+        '400':
+          description: Invalid sponsorship ID supplied
+        '404':
+          description: Sponsorship not found
+      x-swagger-router-controller: Sponsorships
   /finders:
     get:
       tags:
@@ -564,18 +691,18 @@ paths:
         '405':
           description: Invalid input
       x-swagger-router-controller: Finder
-  /finders/{explorerId}:
+  /finders/:finderId:
     get:
       tags:
         - Finder
       summary: Find search criteria by Explorer ID
       description: Returns a search criteria by Explorer ID
-      operationId: search_explorer_criteria
+      operationId: read_a_finder
       produces:
         - application/xml
         - application/json
       parameters:
-        - name: explorerId
+        - name: finderId
           in: path
           description: ID of explorer to return by its criteria
           required: true
@@ -595,12 +722,12 @@ paths:
         - Finder
       summary: Update a search criteria
       description: This can only be done by the authorized user.
-      operationId: update_finder
+      operationId: update_a_finder
       produces:
         - application/xml
         - application/json
       parameters:
-        - name: explorerId
+        - name: finderId
           in: path
           description: explorerId that needs to be updated
           required: true
@@ -650,7 +777,7 @@ paths:
           description: New computation object that needs to be added to the Acme Explorer
           required: true
           schema:
-            $ref: '#/definitions/Trip'
+            $ref: '#/definitions/Datawarehouse'
       responses:
         '405':
           description: Invalid input
@@ -681,6 +808,140 @@ paths:
         '404':
           description: Indicator not found
       x-swagger-router-controller: Datawarehouse
+  /login:
+    get:
+      tags:
+        - Login
+      summary: Provide email and password
+      description: ''
+      operationId: login_an_actor
+      produces:
+        - application/xml
+        - application/json
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+      x-swagger-router-controller: Login
+  /store/insertMany:
+    post:
+      tags:
+        - store
+      summary: Store a json less than 16 MB
+      description: ''
+      operationId: store_json_insertMany
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters: []
+      responses:
+        '405':
+          description: Invalid input
+      x-swagger-router-controller: Store
+  /store/url:
+    post:
+      tags:
+        - store
+      summary: Store a json via url
+      description: ''
+      operationId: store_json_url
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters: []
+      responses:
+        '405':
+          description: Invalid input
+      x-swagger-router-controller: Store
+  /store/fs:
+    post:
+      tags:
+        - store
+      summary: Store a large json
+      description: ''
+      operationId: store_json_fs
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters: []
+      responses:
+        '405':
+          description: Invalid input
+      x-swagger-router-controller: Store
+  /config:
+    get:
+      tags:
+        - Global Configuration
+      summary: Find global config
+      description: ''
+      operationId: get_global_config
+      produces:
+        - application/xml
+        - application/json
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+      x-swagger-router-controller: GlobalConfig
+    post:
+      tags:
+        - Global Configuration
+      summary: Add a new Global Config
+      description: ''
+      operationId: post_global_config
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/GlobalConfig'
+      responses:
+        '405':
+          description: Invalid input
+      x-swagger-router-controller: Global Config
+    put:
+      tags:
+        - Global Configuration
+      summary: Update global config
+      description: ''
+      operationId: update_global_config
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: globalconfig
+          in: path
+          description: global config that needs to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update global config object
+          required: true
+          schema:
+            $ref: '#/definitions/GlobalConfig'
+      responses:
+        '400':
+          description: Invalid Global Config
+        '404':
+          description: Global Config not found
+      x-swagger-router-controller: Global Config
 definitions:
   Actor:
     type: object
@@ -703,87 +964,73 @@ definitions:
         type: string
       email:
         type: string
-        minLength: 1
+        pattern: ^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$
       phone:
         type: string
-        minLength: 1
       address:
         type: string
       password:
         type: string
-        minLength: 1
+        minLength: 5
       preferredLanguage:
         type: string
-        minLength: 1
+        default: en
       role:
-        type: number
+        type: string
+        enum: ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR']
       banned:
         type: boolean
-      search:
-        type: object
-        properties: {}
+        default: false
+      finderId:
+        $ref: "#/definitions/Finder"
       created:
         type: string
         format: date
-    example:
-      password: password
-      preferredLanguage: preferredLanguage
-      search: '{}'
-      address: address
-      role: 0.8008281904610115
-      phone: phone
-      surname: surname
-      created: '2000-01-23'
-      name: name
-      banned: true
-      email: email
+      flatRatePaid:
+        type: boolean
+        default: false
+      customToken:
+        type: string
   Application:
     type: object
     required:
-      - cancelationMoment
+      - dateCancelation
       - comments
-      - consumerName
       - dateApplication
+      - paid
       - datePayment
       - explorerId
       - managerId
       - status
       - tripId
+      - rejectionComment
     properties:
       status:
         type: string
-      consumerName:
-        type: string
+        default: 'PENDING'
+        enum: ['PENDING', 'REJECTED', 'DUE', 'ACCEPTED', 'CANCELLED']
       dateApplication:
         type: string
         format: date
       datePayment:
         type: string
         format: date
-      cancelationMoment:
+      paid:
+        type: boolean
+        default: false
+      dateCancelation:
         type: string
         format: date
+      rejectionComment:
+        type: string
       comments:
-        type: number
+        type: string
       explorerId:
-        type: object
-        properties: {}
+        $ref: "#/definitions/Actor"
       tripId:
-        type: object
-        properties: {}
+        $ref: "#/definitions/Trip"
       managerId:
-        type: object
-        properties: {}
-    example:
-      cancelationMoment: '2000-01-23'
-      dateApplication: '2000-01-23'
-      comments: 0.8008281904610115
-      trip: '{}'
-      manager: '{}'
-      explorer: '{}'
-      status: status
-      consumerName: consumerName
-      datePayment: '2000-01-23'
+        $ref: "#/definitions/Actor"
   Trip:
     type: object
     required:
@@ -792,25 +1039,35 @@ definitions:
       - dateEnd
       - dateInit
       - description
-      - list_of_applications
+      - managerId
       - pictures
       - price
-      - sponsors
       - stages
       - ticker
       - title
+      - sponsorships
+      - status
+      - canceledReason
     properties:
       ticker:
         type: string
+        pattern: return ^\d{6}-\w{4}$
+      status:
+        type: string
+        default: 'CREATED'
+        enum: ['PUBLISHED', 'CANCELLED', 'CREATED', 'STARTED', 'ENDED']
       title:
         type: string
       description:
         type: string
+      canceledReason:
+        type: string
+        default: 'null'
       price:
         type: number
-      list_of_applications:
-        type: object
-        properties: {}
+        minimum: 0
+      managerId:
+        $ref: "#/definitions/Actor"
       dateInit:
         type: string
         format: date
@@ -821,39 +1078,52 @@ definitions:
         type: object
         properties: {}
       stages:
-        type: object
-        properties: {}
+        $ref: "#/definitions/Stage"
       comments:
-        type: object
-        properties: {}
-      sponsors:
-        type: object
-        properties: {}
+        $ref: "#/definitions/Comment"
       created:
         type: string
         format: date
-    example:
-      ticker: ticker
-      list_of_applications: '{}'
-      comments: '{}'
-      price: 0.8008281904610115
-      sponsors: '{}'
-      created: '2000-01-23'
-      dateInit: '2000-01-23'
-      stages: '{}'
-      description: description
-      dateEnd: '2000-01-23'
-      title: title
-      pictures: '{}'
+      sponsorships:
+        $ref: "#/definitions/Sponsorship"
+  Stage:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+        minimum: 0
+      dateInit:
+        type: string
+        format: date
+    required:
+      - title
+      - description
+      - price
+      - dateInit
+  Comment:
+    type: object
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+      commentText:
+        type: string
+    required:
+      - title
+      - author
+      - commentText
   Sponsorship:
     type: object
     required:
       - banner
       - link
       - paid
-      - price
       - sponsorId
-      - tripId
     properties:
       banner:
         type: object
@@ -862,19 +1132,11 @@ definitions:
         type: string
       paid:
         type: boolean
+        default: false
       price:
         type: number
       sponsorId:
-        type: number
-      tripId:
-        type: number
-    example:
-      banner: {}
-      link: acmerexplorer.swagger.io
-      paid: true
-      price: 654121
-      sponsordID: 4238795
-      tripId: 51238
+        $ref: "#/definitions/Actor"
   Finder:
     type: object
     required:
@@ -889,23 +1151,17 @@ definitions:
         type: string
       priceMin:
         type: number
+        minimum: 0
       priceMax:
         type: number
       dateInit:
         type: string
-        format: datetime
+        format: date
       dateEnd:
         type: string
-        format: datetime
+        format: date
       explorerId:
-        type: number
-    example:
-      keyword: paris
-      priceMin: 0
-      priceMax: 644646
-      dateInit: 2019-04-16
-      dateEnd: 2019-04-20
-      explorerId: 52
+        $ref: "#/definitions/Stage"
   Datawarehouse:
     type: object
     required:
@@ -934,3 +1190,21 @@ definitions:
       topKeywordsFinderStats:
         type: object
         properties: {}
+  GlobalConfig:
+    type: object
+    required: 
+      - flatRate
+      - finderResults
+      - finderTimeToCached
+    properties:
+      flatRate:
+        type: number
+        minimum: 0
+      finderResults:
+        type: number
+        minimum: 0
+        maximum: 100
+      finderTimeToCached:
+        type: number
+        minimum: 60
+        maximum: 1400
