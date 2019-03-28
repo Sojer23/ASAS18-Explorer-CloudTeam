@@ -34,6 +34,7 @@ var port = process.env.PORT || 8080;
     useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
   };*/
 
+
 //HTTPS CERTS OPTIONS
 /*const options = {
     key: fs.readFileSync('./keys/cloudTeamServer.key'),
@@ -89,6 +90,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(middleware.swaggerUi());
 });*/
 
+
 //--------------FIREBASE CONFIGURATION----------------
 //Fragmento de configuración del SDK de administración
 var adminConfig = {
@@ -130,9 +132,21 @@ mongoose.connection.on("open", function (err, conn) {
     //https.createServer(options, app).listen(port);
 });
 
-app.get('/', function (req, res) {
-    res.redirect('/docs');
-});
+var publicFolder = path.join(__dirname, 'public');
+
+app.use('/',express.static(publicFolder));
+
+if(process.env.NODE_ENV == "PRODUCTION"){
+    console.log(Date()+": Production Mode");
+    app.get("/", function(request, response){
+        response.sendFile(publicFolder+"/prod.html");
+    });
+}else{
+    console.log(Date()+": Development Mode");    
+    app.get("/", function(request, response){
+        response.sendFile(publicFolder+"/dev.html");
+    });
+}
 
 
 mongoose.connection.on("error", function (err, conn) {
