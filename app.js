@@ -1,30 +1,44 @@
 var express = require('express'),
     fs = require('fs'),
+    path = require('path'),
     //https = require('https'),
     app = express(),
     cors = require('cors'),
-    port = process.env.PORT || 8080,
     mongoose = require('mongoose'),
-    //Models
-    Actor = require('./api/models/actorModel'),
+    bodyParser = require('body-parser'),
+    admin = require("firebase-admin"),
+    serviceAccount = require("../ASAS-certs/asas-cloudteam-firebase-adminsdk-4oxdu-0115ceb4ac");
+
+    //Swagger modules
+    var swaggerTools = require('swagger-tools');
+    var jsyaml = require('js-yaml');
+
+
+//Models
+var Actor = require('./api/models/actorModel'),
     Sponsorship = require('./api/models/sponsorshipModel'),
     Trip = require('./api/models/tripModel'),
     Finder = require('./api/models/finderModel'),
     Application = require('./api/models/applicationModel'),
     DataWareHouse = require('./api/models/dataWareHouseModel'),
     globalConfig = require('./api/models/globalConfigModel'),
-    DataWareHouseTools = require('./api/controllers/dataWareHouseController'),
-    bodyParser = require('body-parser')
-    admin = require("firebase-admin"),
-    serviceAccount = require("../ASAS-certs/asas-cloudteam-firebase-adminsdk-4oxdu-0115ceb4ac");
+    DataWareHouseTools = require('./api/controllers/dataWareHouseController');
 
-    //HTTPS CERTS OPTIONS
-    /*const options = {
-        key: fs.readFileSync('./keys/cloudTeamServer.key'),
-        cert: fs.readFileSync('./keys/cloudTeamServer.cert')
-      };*/
+/////CONFIGURATIONS
+var port = process.env.PORT || 8080;
 
-    
+// swaggerRouter configuration
+/*var swagerOptions = {
+    swaggerUi: path.join(__dirname, '/swagger.json'),
+    controllers: path.join(__dirname, './api/controllers'),
+    useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
+  };*/
+
+//HTTPS CERTS OPTIONS
+/*const options = {
+    key: fs.readFileSync('./keys/cloudTeamServer.key'),
+    cert: fs.readFileSync('./keys/cloudTeamServer.cert')
+};*/
 
 // MongoDB URI building
 var mongoDBUser = process.env.mongoDBUser || "admin";
@@ -54,6 +68,28 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+//SWAGER CONFIGURATION
+// The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
+/*var spec = fs.readFileSync(path.join(__dirname,'./doc/acmeexplorer-doc.yaml'), 'utf8');
+var swaggerDoc = jsyaml.safeLoad(spec);
+
+// Initialize the Swagger middleware
+swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
+
+  // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
+  app.use(middleware.swaggerMetadata());
+
+  // Validate Swagger requests
+  app.use(middleware.swaggerValidator());
+
+  // Route validated requests to appropriate controller
+  app.use(middleware.swaggerRouter(swaggerOptions));
+
+  // Serve the Swagger documents and Swagger UI
+  app.use(middleware.swaggerUi());
+});*/
+
+//--------------FIREBASE CONFIGURATION----------------
 //Fragmento de configuración del SDK de administración
 var adminConfig = {
     credential: admin.credential.cert(serviceAccount),
@@ -61,6 +97,9 @@ var adminConfig = {
 };
 admin.initializeApp(adminConfig);
 
+
+
+//-------------------ROUTING-------------------------
 var routesActors = require('./api/routes/actorRoutes');
 var routesSponsorships = require('./api/routes/sponsorshipRoutes');
 var routesTrips = require('./api/routes/tripRoutes');
@@ -82,7 +121,7 @@ routesStore(app);
 routesGlobalConfig(app);
 
 
-
+//------------------CONNECT TO MONGO-------------------
 console.log("Connecting DB to: " + mongoDBURI);
 mongoose.connection.on("open", function (err, conn) {
     app.listen(port, function () {
