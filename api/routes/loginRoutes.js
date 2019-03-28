@@ -7,7 +7,7 @@ module.exports = function(app) {
 	 *
 	 * @section actors
 	 * @type get
-	 * @url /v1/actors/login/
+	 * @url /v1/login/
 	 * @param {string} email
    * @param {string} password
 	*/
