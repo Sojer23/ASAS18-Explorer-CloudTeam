@@ -96,7 +96,7 @@ function getTripsOfFinder(finder) {
 
   //Create query
   var query = {};
-  if (dateInit || dateEnd) {
+  /*if (dateInit || dateEnd) {
     query.dateInit = {};
     query.dateEnd = {};
     if(dateInit){
@@ -106,9 +106,8 @@ function getTripsOfFinder(finder) {
       query.dateInit.$lte = dateEnd;
       query.dateEnd.$lte = dateEnd;
     }
-    
+  }*/
   
-  }
   if (priceMin || priceMax) {
     query.price = {};
     query.price.$gte = priceMax;

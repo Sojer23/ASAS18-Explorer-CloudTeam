@@ -19,12 +19,10 @@ var FinderSchema = new Schema({
     required: 'priceMax is required'
   },
   dateInit: {
-    type: Date,
-    required: true
+    type: Date
   },
   dateEnd: {
-    type: Date,
-    required: true
+    type: Date
   },
   explorerId: {
     type: Schema.Types.ObjectId,

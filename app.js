@@ -9,9 +9,9 @@ var express = require('express'),
     admin = require("firebase-admin"),
     serviceAccount = require("../ASAS-certs/asas-cloudteam-firebase-adminsdk-4oxdu-0115ceb4ac");
 
-    //Swagger modules
-    var swaggerTools = require('swagger-tools');
-    var jsyaml = require('js-yaml');
+//Swagger modules
+var swaggerTools = require('swagger-tools');
+var jsyaml = require('js-yaml');
 
 
 //Models
@@ -104,17 +104,17 @@ mongoose.connection.on("open", function (err, conn) {
 
 var publicFolder = path.join(__dirname, 'public');
 
-app.use('/',express.static(publicFolder));
+app.use('/', express.static(publicFolder));
 
-if(process.env.NODE_ENV == "PRODUCTION"){
-    console.log(Date()+": Production Mode");
-    app.get("/", function(request, response){
-        response.sendFile(publicFolder+"/prod.html");
+if (process.env.NODE_ENV == "PRODUCTION") {
+    console.log(Date() + ": Production Mode");
+    app.get("/", function (request, response) {
+        response.sendFile(publicFolder + "/prod.html");
     });
-}else{
-    console.log(Date()+": Development Mode");    
-    app.get("/", function(request, response){
-        response.sendFile(publicFolder+"/dev.html");
+} else {
+    console.log(Date() + ": Development Mode");
+    app.get("/", function (request, response) {
+        response.sendFile(publicFolder + "/dev.html");
     });
 }
 

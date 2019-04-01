@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
   Actor = mongoose.model('Actor'),
   authController = require('./authController');
 
+  var admin = require('firebase-admin');
+
 exports.create_an_actor = function (req, res) {
 
   console.log(Date() + ": " + "POST /v1/actors");
