@@ -23,3 +23,19 @@ Dentro de esta colección, en la carpeta HTTPS existe una petición creada hacia
 Una vez tenemos localizada la petición, tenemos que entrar a los ajustes de PostMan y navegar hasta la ventana 'General' y deshabilitar la casilla 'SSL certificate verification'.
 
 Tras esto, levantar la aplicación y hacer la petición de PostMan nombrada con anterioridad.
+
+### FIREBASE
+Esta aplicación tiene habilitada la característica de hacer un registro de usuarios con la autenticación de Firebase. Contiene la configuración necesaria para hacer un login y la edición del nombre y apellidos de un usuario.
+
+Para levantar el cliente de Angular es necesario clonar el siguiente repositorio:
+- https://github.com/Sojer23/ASAS-Explorer-CloudTeam-Client
+
+Para crear la aplicación hay que ejecutar el siguiente comando dentro del directorio de la aplicación:
+```
+ng serve
+```
+
+Se mostrará lo siguiente:
+- https://drive.google.com/file/d/1imPzDN1-v4PxVB9rJmr7DuPJtD8XPD2-/view
+Sólo se podrá iniciar sesión en el caso de que el actor no esté baneado, en otro caso la aplicación te notificará:
+- https://drive.google.com/file/d/1bsloInjxa1vWslBCF8T4ShaEcPslLWhr/view
