@@ -1,7 +1,7 @@
 var express = require('express'),
     fs = require('fs'),
     path = require('path'),
-    //https = require('https'),
+    https = require('https'),
     app = express(),
     cors = require('cors'),
     mongoose = require('mongoose'),
@@ -26,14 +26,6 @@ var Actor = require('./api/models/actorModel'),
 
 /////CONFIGURATIONS
 var port = process.env.PORT || 8080;
-
-// swaggerRouter configuration
-/*var swagerOptions = {
-    swaggerUi: path.join(__dirname, '/swagger.json'),
-    controllers: path.join(__dirname, './api/controllers'),
-    useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
-  };*/
-
 
 //HTTPS CERTS OPTIONS
 /*const options = {
@@ -67,28 +59,6 @@ mongoose.connect(mongoDBURI, {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-
-
-//SWAGER CONFIGURATION
-// The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
-/*var spec = fs.readFileSync(path.join(__dirname,'./doc/acmeexplorer-doc.yaml'), 'utf8');
-var swaggerDoc = jsyaml.safeLoad(spec);
-
-// Initialize the Swagger middleware
-swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
-
-  // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
-  app.use(middleware.swaggerMetadata());
-
-  // Validate Swagger requests
-  app.use(middleware.swaggerValidator());
-
-  // Route validated requests to appropriate controller
-  app.use(middleware.swaggerRouter(swaggerOptions));
-
-  // Serve the Swagger documents and Swagger UI
-  app.use(middleware.swaggerUi());
-});*/
 
 
 //--------------FIREBASE CONFIGURATION----------------
