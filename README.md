@@ -37,5 +37,7 @@ ng serve
 
 Se mostrará lo siguiente:
 - https://drive.google.com/file/d/1imPzDN1-v4PxVB9rJmr7DuPJtD8XPD2-/view
+
 Sólo se podrá iniciar sesión en el caso de que el actor no esté baneado, en otro caso la aplicación te notificará:
+
 - https://drive.google.com/file/d/1bsloInjxa1vWslBCF8T4ShaEcPslLWhr/view
