@@ -180,6 +180,31 @@
 					"response": []
 				},
 				{
+					"name": "PUT UNBAN-ACTOR-EXPLORER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/v1/actors/5c7a95c28968263a683b6bf4/unban",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"actors",
+								"5c7a95c28968263a683b6bf4",
+								"unban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "PUT UPDATE-ACTOR-EXPLORER",
 					"request": {
 						"method": "PUT",
@@ -209,6 +234,30 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET Actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/actors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"actors"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -229,7 +278,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"sponsorId\": \"5c69f62ad9d04b6d7485e2ea\",\n\t\"tripId\": null,\n\t\"banner\":null,\n\t\"link\": \"www.examplelink.com\",\n\t\"paid\": false,\n\t\"price\": 0\n}"
+							"raw": "{\n\t\"sponsorId\": \"5c69f62ad9d04b6d7485e2ea\",\n\t\"banner\":null,\n\t\"link\": \"www.examplelink.com\",\n\t\"paid\": false,\n\t\"price\": 0\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/v1/sponsorships",
@@ -264,7 +313,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\":\"Viaje a París\",\n\t\"description\":\"Viaje a la ciudad del amor donde podrás disfutar de otras paradas previas.\",\n\t\"dateInit\": \"2019-05-04T14:48:00.000\",\n\t\"dateEnd\": \"2019-05-10T14:48:00.000\",\n\t\"stages\": [\n\t\t{\n\t\t\t\"title\":\"Sevilla\",\n\t\t\t\"description\":\"Salida desde Sevilla\",\n\t\t\t\"price\": 0,\n\t\t\t\"dateInit\": \"2019-05-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Madrid\",\n\t\t\t\"description\":\"Parada en Madrid\",\n\t\t\t\"price\": 20,\n\t\t\t\"dateInit\": \"2019-05-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Barcelona\",\n\t\t\t\"description\":\"Parada en Barcelona\",\n\t\t\t\"price\": 60,\n\t\t\t\"dateInit\": \"2019-05-05T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Burdeos\",\n\t\t\t\"description\":\"Parada en Burdeos\",\n\t\t\t\"price\": 120,\n\t\t\t\"dateInit\": \"2019-05-06T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"París\",\n\t\t\t\"description\":\"Parada en París\",\n\t\t\t\"price\": 340,\n\t\t\t\"dateInit\": \"2019-05-07T14:48:00.000\"\n\t\t}],\n\t\"comments\":[\n\t\t{\n\t\t\t\"title\": \"Me encantó\",\n\t\t\t\"author\": \"randomX\",\n\t\t\t\"commentText\":\"Estuve en este viaje el año pasado con mi pareja y nos gustó mucho.\"\n\t\t},\n\t\t{\n\t\t\t\"title\": \"Decepcionante\",\n\t\t\t\"author\": \"randomX1\",\n\t\t\t\"commentText\":\"Esta agencia no sabe organizar viajes.\"\n\t\t}],\n\t\"managerId\": \"5c75c1bc4897633db069e9b1\"\n\t\n}"
+							"raw": "{\n\t\"_id\":\"5c97c4caf0b1c134a85a8977\",\n\t\"title\":\"Viaje a Bruselas\",\n\t\"description\":\"Viaje a la ciudad del chocolate.\",\n\t\"dateInit\": \"2019-05-04T14:48:00.000\",\n\t\"dateEnd\": \"2019-05-10T14:48:00.000\",\n\t\"stages\": [\n\t\t{\n\t\t\t\"title\":\"Sevilla\",\n\t\t\t\"description\":\"Salida desde Sevilla\",\n\t\t\t\"price\": 0,\n\t\t\t\"dateInit\": \"2019-05-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Madrid\",\n\t\t\t\"description\":\"Parada en Madrid\",\n\t\t\t\"price\": 20,\n\t\t\t\"dateInit\": \"2019-05-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Barcelona\",\n\t\t\t\"description\":\"Parada en Barcelona\",\n\t\t\t\"price\": 60,\n\t\t\t\"dateInit\": \"2019-05-05T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Burdeos\",\n\t\t\t\"description\":\"Parada en Burdeos\",\n\t\t\t\"price\": 120,\n\t\t\t\"dateInit\": \"2019-05-06T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"París\",\n\t\t\t\"description\":\"Parada en París\",\n\t\t\t\"price\": 340,\n\t\t\t\"dateInit\": \"2019-05-07T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Bruselas\",\n\t\t\t\"description\":\"Parada en Bruselas\",\n\t\t\t\"price\": 440,\n\t\t\t\"dateInit\": \"2019-05-07T14:48:00.000\"\n\t\t}],\n\t\"comments\":[\n\t\t{\n\t\t\t\"title\": \"Me encantó\",\n\t\t\t\"author\": \"randomX\",\n\t\t\t\"commentText\":\"Estuve en este viaje el año pasado con mi pareja y nos gustó mucho.\"\n\t\t},\n\t\t{\n\t\t\t\"title\": \"Decepcionante\",\n\t\t\t\"author\": \"randomX1\",\n\t\t\t\"commentText\":\"Esta agencia no sabe organizar viajes.\"\n\t\t}],\n\t\"managerId\": \"5c9669b5a938b1307cc1cbfa\"\n\t\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/v1/trips",
@@ -313,7 +362,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/v1/trips/5c75cb54e8c2f617f0ff9d54",
+							"raw": "localhost:8080/v1/trips/5c97c4caf0b1c134a85a8976",
 							"host": [
 								"localhost"
 							],
@@ -321,9 +370,56 @@
 							"path": [
 								"v1",
 								"trips",
-								"5c75cb54e8c2f617f0ff9d54"
+								"5c97c4caf0b1c134a85a8976"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH TRIP By Keyword",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/v1/trips/search?keyword=Barcelona&sortedBy=created&beginFrom=0&pageSize=4&backwards=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"trips",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "Barcelona"
+								},
+								{
+									"key": "sortedBy",
+									"value": "created"
+								},
+								{
+									"key": "beginFrom",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "4"
+								},
+								{
+									"key": "backwards",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Búsqueda de viajes con keyword = Barcelona. Devuelve los elementos que coincidan con la búsqueda ordenados por fecha de creación y con parámetros beginFrom=0 y pageSize=4. Además, backwards=true me indica que le de la vuelta a los resultados de la búsqueda."
 					},
 					"response": []
 				},
@@ -341,10 +437,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\":\"Viaje a Bruselas\",\n\t\"description\":\"Viaje a la cápital de Europa.\",\n\t\"dateInit\": \"2019-06-04T14:48:00.000\",\n\t\"dateEnd\": \"2019-06-10T14:48:00.000\",\n\t\"stages\": [\n\t\t{\n\t\t\t\"title\":\"Sevilla\",\n\t\t\t\"description\":\"Salida desde Sevilla\",\n\t\t\t\"price\": 0,\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Madrid\",\n\t\t\t\"description\":\"Parada en Madrid\",\n\t\t\t\"price\": 20,\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Bruselas\",\n\t\t\t\"description\":\"Parada en Bruselas\",\n\t\t\t\"price\": 120,\n\t\t\t\"dateInit\": \"2019-06-05T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Gante\",\n\t\t\t\"description\":\"Parada en Gante\",\n\t\t\t\"price\": 1400,\n\t\t\t\"dateInit\": \"2019-06-06T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Brujas\",\n\t\t\t\"description\":\"Parada en Brujas\",\n\t\t\t\"price\": 90,\n\t\t\t\"dateInit\": \"2019-06-07T14:48:00.000\"\n\t\t}],\n\t\"comments\":[\n\t\t{\n\t\t\t\"title\": \"Me encantó\",\n\t\t\t\"author\": \"randomX\",\n\t\t\t\"commentText\":\"Estuve en este viaje el año pasado con mi pareja y nos gustó mucho.\"\n\t\t},\n\t\t{\n\t\t\t\"title\": \"Decepcionante\",\n\t\t\t\"author\": \"randomX1\",\n\t\t\t\"commentText\":\"Esta agencia no sabe organizar viajes.\"\n\t\t}],\n\t\"managerId\": \"5c75c1c54897633db069e9b2\"\n\t\n}"
+							"raw": "{\r\n\t\"title\":\"Viaje a Bruselas\",\r\n\t\"description\":\"Viaje a la cápital de Europa. Añadiendo Gante y Brujas.\",\r\n\t\"dateInit\": \"2019-06-04T14:48:00.000\",\r\n\t\"dateEnd\": \"2019-06-10T14:48:00.000\",\r\n\t\"stages\": [\r\n\t\t{\r\n\t\t\t\"title\":\"Sevilla\",\r\n\t\t\t\"description\":\"Salida desde Sevilla\",\r\n\t\t\t\"price\": 0,\r\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"title\":\"Madrid\",\r\n\t\t\t\"description\":\"Parada en Madrid\",\r\n\t\t\t\"price\": 20,\r\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"title\":\"Bruselas\",\r\n\t\t\t\"description\":\"Parada en Bruselas\",\r\n\t\t\t\"price\": 120,\r\n\t\t\t\"dateInit\": \"2019-06-05T14:48:00.000\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"title\":\"Gante\",\r\n\t\t\t\"description\":\"Parada en Gante\",\r\n\t\t\t\"price\": 1400,\r\n\t\t\t\"dateInit\": \"2019-06-06T14:48:00.000\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"title\":\"Brujas\",\r\n\t\t\t\"description\":\"Parada en Brujas\",\r\n\t\t\t\"price\": 90,\r\n\t\t\t\"dateInit\": \"2019-06-07T14:48:00.000\"\r\n\t\t}],\r\n\t\"comments\":[\r\n\t\t{\r\n\t\t\t\"title\": \"Me encantó\",\r\n\t\t\t\"author\": \"randomX\",\r\n\t\t\t\"commentText\":\"Estuve en este viaje el año pasado con mi pareja y nos gustó mucho.\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"title\": \"Decepcionante\",\r\n\t\t\t\"author\": \"randomX1\",\r\n\t\t\t\"commentText\":\"Esta agencia no sabe organizar viajes.\"\r\n\t\t}],\r\n\t\"managerId\": \"5c75c1c54897633db069e9b2\"\r\n\t\r\n}"
 						},
 						"url": {
-							"raw": "localhost:8080/v1/trips/5c75cb54e8c2f617f0ff9d54",
+							"raw": "localhost:8080/v1/trips/5c97c4caf0b1c134a85a8977",
 							"host": [
 								"localhost"
 							],
@@ -352,7 +448,39 @@
 							"path": [
 								"v1",
 								"trips",
-								"5c75cb54e8c2f617f0ff9d54"
+								"5c97c4caf0b1c134a85a8977"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CANCEL A TRIP by ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cancelledReason\":\"No hay solicitudes y el viaje era inviable.\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/v1/trips/5c97c4caf0b1c134a85a8977/cancel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"trips",
+								"5c97c4caf0b1c134a85a8977",
+								"cancel"
 							]
 						}
 					},
@@ -367,12 +495,13 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\":\"Viaje a Bruselas\",\n\t\"description\":\"Viaje a la cápital de Europa.\",\n\t\"dateInit\": \"2019-06-04T14:48:00.000\",\n\t\"dateEnd\": \"2019-06-10T14:48:00.000\",\n\t\"stages\": [\n\t\t{\n\t\t\t\"title\":\"Sevilla\",\n\t\t\t\"description\":\"Salida desde Sevilla\",\n\t\t\t\"price\": 0,\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Madrid\",\n\t\t\t\"description\":\"Parada en Madrid\",\n\t\t\t\"price\": 20,\n\t\t\t\"dateInit\": \"2019-06-04T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Bruselas\",\n\t\t\t\"description\":\"Parada en Bruselas\",\n\t\t\t\"price\": 120,\n\t\t\t\"dateInit\": \"2019-06-05T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Gante\",\n\t\t\t\"description\":\"Parada en Gante\",\n\t\t\t\"price\": 1400,\n\t\t\t\"dateInit\": \"2019-06-06T14:48:00.000\"\n\t\t},\n\t\t{\n\t\t\t\"title\":\"Brujas\",\n\t\t\t\"description\":\"Parada en Brujas\",\n\t\t\t\"price\": 90,\n\t\t\t\"dateInit\": \"2019-06-07T14:48:00.000\"\n\t\t}],\n\t\"comments\":[\n\t\t{\n\t\t\t\"title\": \"Me encantó\",\n\t\t\t\"author\": \"randomX\",\n\t\t\t\"commentText\":\"Estuve en este viaje el año pasado con mi pareja y nos gustó mucho.\"\n\t\t},\n\t\t{\n\t\t\t\"title\": \"Decepcionante\",\n\t\t\t\"author\": \"randomX1\",\n\t\t\t\"commentText\":\"Esta agencia no sabe organizar viajes.\"\n\t\t}],\n\t\"managerId\": \"5c75c1c54897633db069e9b2\"\n\t\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "localhost:8080/v1/trips/5c75cf7ebf09685d840b02d1",
@@ -487,9 +616,9 @@
 					"response": []
 				},
 				{
-					"name": "DELETE SPONSORSHIP By ID",
+					"name": "PUT SPONSORSHIPS By ID",
 					"request": {
-						"method": "DELETE",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -500,7 +629,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"sponsorId\":\"5c75c2474897633db069e9b8\",\n\t\"tripId\": \"5c75cf46bf09685d840b02c9\",\n\t\"banner\": null,\n\t\"link\":\"linkfakeUpdated.com\"\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/v1/sponsorships/5c75d8f44363490130db5296",
@@ -518,9 +647,9 @@
 					"response": []
 				},
 				{
-					"name": "PUT SPONSORSHIPS By ID",
+					"name": "DELETE SPONSORSHIP By ID",
 					"request": {
-						"method": "PUT",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -531,7 +660,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"sponsorId\":\"5c75c2474897633db069e9b8\",\n\t\"tripId\": \"5c75cf46bf09685d840b02c9\",\n\t\"banner\": null,\n\t\"link\":\"linkfakeUpdated.com\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "localhost:8080/v1/sponsorships/5c75d8f44363490130db5296",
@@ -567,17 +696,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"comments\":[\"Quiero ir en clase business.\",\"¿Me podéis confirmar?\"],\n\t\"explorerId\": \"5c75c18b4897633db069e9af\",\n\t\"tripId\": \"5c75cf46bf09685d840b02c9\"\n}"
+							"raw": "{\n\t\"comments\":[\"Quiero la oferta de chollometro\",\"¿Puedo llevar a mi mascota?\"],\n\t\"explorerId\": \"5c7a95c28968263a683b6bf1\"\n}"
 						},
 						"url": {
-							"raw": "localhost:8080/v1/applications",
+							"raw": "localhost:8080/v1/applications/5c97c4caf0b1c134a85a8974",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"v1",
-								"applications"
+								"applications",
+								"5c97c4caf0b1c134a85a8974"
 							]
 						}
 					},
@@ -674,6 +804,199 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CHANGE APPLICATION STATUS",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/v1/applications/5c9803fa4cd5224b28d7653c/change?status=REJECTED",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"applications",
+								"5c9803fa4cd5224b28d7653c",
+								"change"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "REJECTED"
+								}
+							]
+						},
+						"description": "This method only can change the status from PENDING to REJECTED or DUE"
+					},
+					"response": []
+				},
+				{
+					"name": "PAY APPLICATION",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/v1/applications/5c9803fa4cd5224b28d7653c/pay",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"applications",
+								"5c9803fa4cd5224b28d7653c",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CANCEL APPLICATION",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/v1/applications/5c9803fa4cd5224b28d7653c/cancel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"applications",
+								"5c9803fa4cd5224b28d7653c",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CONFIG Methods",
+			"item": [
+				{
+					"name": "GET Global Config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Global Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flatRate\":350,\n\t\"finderResults\": 10,\n\t\"finderTimeToCached\":120\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Update Global Config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/config?finderTimeToCached=180",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"config"
+							],
+							"query": [
+								{
+									"key": "finderTimeToCached",
+									"value": "180"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -694,7 +1017,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"keyword\":\"Málaga\",\n\t\"priceMin\": 100,\n\t\"priceMax\": 400,\n\t\"dateInit\": \"2019-05-20T14:48:00.000\",\n\t\"dateEnd\": \"2019-05-25T14:48:00.000\",\n\t\"explorerId\": \"5c75c18b4897633db069e9af\"\n}"
+							"raw": "{\n\t\"keyword\":\"Touluse\",\n\t\"priceMin\": 100,\n\t\"priceMax\": 600,\n\t\"dateInit\": \"\",\n\t\"dateEnd\": \"\",\n\t\"explorerId\": \"5c7a95c28968263a683b6bf2\"\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/v1/finders",
