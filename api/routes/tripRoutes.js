@@ -25,6 +25,7 @@ module.exports = function (app) {
  * @type get
  * @url /v1/trips/search
  * @param {string} sortedBy (category)
+ * @param {string} categoryId (categoryId)
  * @param {string} keyword //in title, ticket, or description
  */
   app.route('/v1/trips/search')
@@ -58,6 +59,33 @@ module.exports = function (app) {
 */
   app.route('/v1/trips/:tripID/cancel')
     .put(trips.cancel_a_trip);
+
+
+    /**
+   * Get all categories
+   *    RequiredRoles: Manager
+   * 
+   * Post a category
+   * 
+   * Delete a category
+   *    RequiredRoles: Manager
+   * 
+   * Get a category
+   *    RequiredRoles: None
+   * 
+   * @section category
+   * @type get post put delete 
+   * @url /v1/categories/
+  */
+
+  // app.route('/v0/categories')
+  //   .get(trips.list_all_categories)
+  //   .post(trips.create_a_category);
+
+    // app.route('/v0/categories/:categoryId')
+    // .get(trips.read_a_category);
+  //   .put(trips.update_a_category)
+  //   .delete(trips.delete_a_category);
 
 
 
@@ -104,4 +132,5 @@ module.exports = function (app) {
   app.route('/v2/trips/:tripID/cancel')
     .put(authController.verifyUser(["MANAGER"]), trips.cancel_a_trip_v2);
 };
+
 

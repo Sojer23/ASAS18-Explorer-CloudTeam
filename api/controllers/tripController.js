@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
   Trip = mongoose.model('Trip'),
   Application = mongoose.model('Application');
 
+
 exports.list_all_trips = function (req, res) {
 
   console.log(Date() + ": " + "GET /v1/trips");
@@ -32,6 +33,7 @@ exports.create_a_trip = function (req, res) {
     if (err) {
       console.log(Date() + ": " + err);
       res.send(err);
+      //console.log(err);
     }
     else {
       console.log(Date() + ": " + "Trip created.");
@@ -172,6 +174,9 @@ exports.cancel_a_trip = function (req, res) {
 exports.search_trips = function (req, res) {
   console.log(Date() + ": " + "GET /v1/trips/search");
 
+
+
+  
   /**
    * PARAMETERS
    * - keyword
@@ -191,4 +196,8 @@ exports.update_a_trip_v2 = function (req, res) { }
 exports.delete_a_trip_v2 = function (req, res) { }
 exports.cancel_a_trip_v2 = function (req, res) { }
 
+// this solved the fucking issue
+//exports.list_all_categories = function (req, res) {}
+//exports.create_a_category = function (req, res) {}
+//exports.read_a_category = function(req, res) {}
 

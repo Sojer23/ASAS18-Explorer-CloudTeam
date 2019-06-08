@@ -2,8 +2,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
   Actor = mongoose.model('Actor');
+
 const generate = require('nanoid/generate');
 const dateFormat = require('dateformat');
+
+
 
 var StageSchema = new Schema({
   title: {
@@ -98,6 +101,10 @@ var tripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Sponsorships"
   }],
+  category: [{
+    type: Schema.Types.ObjectId,
+    ref: "Category"
+  }],
   managerID: {
     type: Schema.Types.ObjectId,
     ref: "Actor",
@@ -172,12 +179,14 @@ tripSchema.pre('save', function (next) {
   }
 });
 
+//INDICES
+
 tripSchema.index({price:1});
 tripSchema.index({title: 'text', description: 'text', ticker: 'text'});
 StageSchema.index({price:1});
 StageSchema.index({title: 'text', description: 'text'});
 
-//INDICES
+tripSchema.index({ category: 1, price: 1 }); //1 ascending,  -1 descending
 //Búsqueda por precio de forma ascendente
 tripSchema.index({ price: 1 });
 //Índice para la búsqueda de trips por keyword
@@ -185,4 +194,6 @@ tripSchema.index({ title: 'text', description: 'text', ticker: 'text' });
 
 module.exports = mongoose.model('Trip', tripSchema);
 module.exports = mongoose.model('Stage', StageSchema);
+
+
 

@@ -20,7 +20,7 @@ exports.list_all_sponsorships = function (req, res) {
             res.status(200).send(sponsorships);
         }
     });
-}
+};
 
 exports.create_a_sponsorship = function (req, res) {
 

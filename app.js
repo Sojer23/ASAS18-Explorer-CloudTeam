@@ -9,12 +9,13 @@ var express = require('express'),
     Actor = require('./api/models/actorModel'),
     Finder = require('./api/models/finderModel'),
     Trip = require('./api/models/tripModel'),
+    Category = require('./api/models/categoryModel'),
     Application = require('./api/models/applicationModel'),
     Sponsorship = require('./api/models/sponsorshipModel'),
     DataWareHouse = require('./api/models/dataWareHouseModel'),
     globalConfig = require('./api/models/globalConfigModel'),
     DataWareHouseTools = require('./api/controllers/dataWareHouseController'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
     admin = require("firebase-admin"),
     serviceAccount = require("../ASAS-certs/asas-cloudteam-firebase-adminsdk-4oxdu-0115ceb4ac");
 
@@ -70,6 +71,7 @@ var routesDataWareHouse = require('./api/routes/dataWareHouseRoutes');
 var routesLogin = require('./api/routes/loginRoutes');
 var routesStore = require('./api/routes/storeRoutes');
 var routesGlobalConfig = require('./api/routes/globalConfigRoutes');
+var routesCategory = require('./api/routes/categoryRoutes');
 
 routesFinders(app);
 routesActors(app);
@@ -80,6 +82,8 @@ routesDataWareHouse(app);
 routesLogin(app);
 routesStore(app);
 routesGlobalConfig(app);
+routesCategory(app);
+
 
 
 
