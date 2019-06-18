@@ -37,19 +37,21 @@ new_category.save(function(err, category) {
 
 exports.read_a_category = function(req, res) {
 
-Category.findById(req.params.categId, function(err, categ) {
+Category.findById(req.params.categoryId, function(err, category) {
   if (err){
     res.status(500).send(err);
-  }
-  else{
-    res.json(categ);
+  } else if (category === null) {
+    res.json({ message: 'Category does not exist' });
+  } else {
+    res.send(category);
   }
 });
 };
 
+
 exports.update_a_category = function(req, res) {
 
-Category.findOneAndUpdate({_id: req.params.categId}, req.body, {new: true}, function(err, categ) {
+Category.findOneAndUpdate({_id: req.params.categoryId }, req.body, {new: true}, function(err, category) {
   if (err){
     if(err.name=='ValidationError') {
         res.status(422).send(err);
@@ -59,7 +61,7 @@ Category.findOneAndUpdate({_id: req.params.categId}, req.body, {new: true}, func
     }
   }
   else{
-    res.json(categ);
+    res.json(category);
 }
 });
 };
@@ -67,7 +69,7 @@ Category.findOneAndUpdate({_id: req.params.categId}, req.body, {new: true}, func
 
 exports.delete_a_category = function(req, res) {
 
-Category.deleteOne({_id: req.params.categId}, function(err, categ) {
+Category.deleteOne({_id: req.params.categoryId }, function(err, category) {
   if (err){
     res.status(500).send(err);
   }
