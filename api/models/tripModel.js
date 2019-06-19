@@ -101,10 +101,10 @@ var tripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Sponsorships"
   }],
-  category: [{
-    type: Schema.Types.ObjectId,
+  category: {
+    type: mongoose.ObjectId,
     ref: "Category"
-  }],
+  },
   managerID: {
     type: Schema.Types.ObjectId,
     ref: "Actor",

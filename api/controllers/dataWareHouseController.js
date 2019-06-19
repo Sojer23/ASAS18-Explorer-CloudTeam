@@ -44,7 +44,7 @@ var CronTime = require('cron').CronTime;
 //'* * * * * *' cada segundo
 //Periodo por defecto en el que se van a ejecutar todas estas agregaciones.
 //En este ejemplo se recomputan las agregaciones cada 10 segundos (No recomendable con grandes volumenes de datos)
-var rebuildPeriod = '*/30 * * * * *';  //El que se usará por defecto
+var rebuildPeriod = '0 0 * * * *';  //El que se usará por defecto
 var computeDataWareHouseJob;
 
 //Contesta a la petición post en la que un administrador puede indicar un nuevo periodo de computación

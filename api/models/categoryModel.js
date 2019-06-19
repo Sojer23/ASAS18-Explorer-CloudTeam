@@ -1,7 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema,
-    Trip = mongoose.model('Trip');
+var Schema = mongoose.Schema;
 
 
 var CategorySchema = new Schema({
@@ -20,34 +19,12 @@ var CategorySchema = new Schema({
       type: Date,
       default: Date.now
     },
-    tripID:{
-        type: Schema.Types.ObjectId,
-        ref: "Trip",
-        required: 'trip id required'
-      },
-  }, { strict: false });
+  }, { strict: false });  
+ 
 
+    //INDICES
+  //Búsqueda pasándole un keyword devuelve las búsquedas que lo contengan
+  CategorySchema.index({ name: "text", description:"text" });
 
-  //Check if the trip exists
-  // CategorySchema.pre('save', function(next){
-
-  //   var new_category = this;
-  //   var trip_id = new_category.tripID;
-  
-  //   if(trip_id){
-  //     Trip.findOne({_id:trip_id}, function(err, res){
-  //         if(err){
-  //           next(err);
-  //         }else{
-  //           if(!res){
-  //             next(new Error("There is not any trip with id: "+ trip_id));
-  //           }else{           
-  //               next();
-  //           }
-  //         }
-  //     });
-  //   }
-  // });
-  
   
   module.exports = mongoose.model('Category', CategorySchema);

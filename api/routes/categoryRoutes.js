@@ -19,6 +19,21 @@ module.exports = function(app) {
  .post(categories.create_a_category);
 
  /**
+ * get results from a search of  category
+ *    RequiredRoles: None
+ * 
+ * @section categories
+ * @type get
+ * @url /v1/categories/search
+ * @param {string} categoryId (categoryId)
+ * @param {string} keyword // name or description
+ */
+app.route('/v1/categories/search')
+.get(categories.search_categories);
+
+
+
+ /**
    * 
    * Get categories by categoryId
    *
@@ -33,5 +48,9 @@ module.exports = function(app) {
  app.route('/v1/categories/:categoryId')
  .get(categories.read_a_category)
  .put(categories.update_a_category)
- .delete(categories.delete_a_category);
+ .delete(categories.delete_a_category_trip);
+
  };
+
+
+ 

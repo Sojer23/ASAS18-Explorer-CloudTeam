@@ -2,7 +2,8 @@
 
 /*---------------CATEGORY----------------------*/
 var mongoose = require('mongoose'),
-  Category = mongoose.model('Category');
+  Category = mongoose.model('Category'),
+  Trip = mongoose.model('Trip');
   
 
 exports.list_all_categories = function(req, res) {
@@ -77,4 +78,101 @@ Category.deleteOne({_id: req.params.categoryId }, function(err, category) {
     res.json({ message: 'Category successfully deleted' });
   }
 });
+};
+
+
+exports.delete_a_category_trip = function (req, res) {
+  console.log(req.params);
+
+  var query = {
+      "category": (req.params._id),
+      "status": {
+          "$ne": "CANCELLED"
+      }
+
+  };
+
+
+  Trip.find(query, function (err, category) {
+      if (err) {
+          res.send(err);
+      }
+      else {
+          if (category.length > 0) {
+
+              res.status(405).json({ message: 'You can not delete this category, this category is assigned to a one or more trip' });
+              return;
+          } else {
+              var querydelete = {
+                  "$and": [
+                      {
+                          _id: req.params._id
+                      }
+
+                  ]
+              };
+              Category.deleteOne(querydelete, function (err, category) {
+                  if (err) {
+                      res.send(err);
+                  }
+                  else {
+                      if (category.deletedCount < 1) {
+                          res.json({ message: 'Category not deleted, is already started' });
+                      } else {
+                          res.json({ message: 'Category successfully deleted' });
+                      }
+                  }
+              });
+          }
+      }
+  });
+
+
+
+
+};
+
+
+exports.search_categories = function (req, res) {
+  console.log(Date() + ": " + "GET /v1/categories/search");
+  var query = {};
+  var skip = 0;
+  var limit = 0;
+  var sort = "";
+
+  if (req.query.keyword) {
+    query.$text = { $search: req.query.keyword }
+  }
+
+  if (req.query.beginFrom) {
+    skip = parseInt(req.query.beginFrom);
+  }
+
+  if (req.query.pageSize) {
+    limit = parseInt(req.query.pageSize);
+  }
+
+  if (req.query.backwards == "true") {
+    sort = "-";
+  }
+
+  if (req.query.sortedBy) {
+    sort += req.query.sortedBy;
+  }
+
+  console.log(Date() + ": Query: " + JSON.stringify(query) + " Skip:" + skip + " Limit:" + limit + " Sort:" + sort);
+
+  Category.find(query)
+    .sort(sort)
+    .skip(skip)
+    .limit(limit)
+    .lean()
+    .exec(function (err, categories) {
+      if (err) {
+        res.send(err);
+      }
+      else {
+        res.json(categories);
+      }
+    });
 };
