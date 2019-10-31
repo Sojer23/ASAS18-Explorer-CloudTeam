@@ -27,7 +27,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "https": "^1.0.0",
-    "mongoose": "^5.4.8",
+    "mongoose": "^5.7.5",
     "nanoid": "^2.0.1",
     "path": "^0.12.7",
     "stream-to-mongo-db": "^1.6.0",
